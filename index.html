@@ -23,19 +23,19 @@
     </section>
     <section class="marbel-section">
         <div class="marbel">
-            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 1" id="marbel-1">
+            <img src="TaskResources/marbels/marble1.jpg" alt="Marbel number 1" id="marbel-1">
         </div>
         <div class="marbel">
-            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 2" id="marbel-2">
+            <img src="TaskResources/marbels/marble1.jpg" alt="Marbel number 2" id="marbel-2">
         </div>
         <div class="marbel">
-            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 3" id="marbel-3">
+            <img src="TaskResources/marbels/marble1.jpg" alt="Marbel number 3" id="marbel-3">
         </div>
         <div class="marbel">
-            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 4" id="marbel-4">
+            <img src="TaskResources/marbels/marble1.jpg" alt="Marbel number 4" id="marbel-4">
         </div>
         <div class="marbel">
-            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 5" id="marbel-5">
+            <img src="TaskResources/marbels/marble1.jpg" alt="Marbel number 5" id="marbel-5">
         </div>
     </section>
 
@@ -58,18 +58,18 @@
                     activeImage = document.getElementById('marbel-' + toGoIndex);
                     for (let i = 1; i < 6; i++) {
                         img = document.getElementById('marbel-' + i)
-                        img.src = '../TaskResources/marbels/marble1.jpg';
+                        img.src = 'TaskResources/marbels/marble1.jpg';
                     }
-                    activeImage.src = '../TaskResources/marbels/marble3.jpg';
+                    activeImage.src = 'TaskResources/marbels/marble3.jpg';
                     currentMarbelIndex = toGoIndex;
                 } else {
                     toGoIndex = 1;
                     activeImage = document.getElementById('marbel-' + toGoIndex);
                     for (let i = 1; i < 6; i++) {
                         img = document.getElementById('marbel-' + i)
-                        img.src = '../TaskResources/marbels/marble1.jpg';
+                        img.src = 'TaskResources/marbels/marble1.jpg';
                     }
-                    activeImage.src = '../TaskResources/marbels/marble3.jpg';
+                    activeImage.src = 'TaskResources/marbels/marble3.jpg';
                     currentMarbelIndex = toGoIndex;
                 }
             }, speed * 1000)
@@ -79,7 +79,7 @@
 
         for (let i = 1; i < 6; i++) {
             img = document.getElementById('marbel-' + i)
-            img.src = '../TaskResources/marbels/marble1.jpg';
+            img.src = 'TaskResources/marbels/marble1.jpg';
             img.onmousemove = function () {
                 clearInterval(startInterval);
             }
