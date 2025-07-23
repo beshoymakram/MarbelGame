@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marbel Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <section class="slideshow-section">
+        <div class="buttons">
+            <button class="prev" id="slower">- Slower -</button>
+            <button class="start-slideshow" id="speed" disabled>Default is 1 sec</button>
+            <button class="next" id="faster">+ Faster +</button>
+        </div>
+        <div class="buttons-2">
+            <button class="prev" id="horizontal" disabled>Horizontal</button>
+            <button class="start-slideshow" id="postition" disabled>Default position is Horizontal</button>
+            <button class="next" id="vertical">Vertical</button>
+        </div>
+    </section>
+    <section class="marbel-section">
+        <div class="marbel">
+            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 1" id="marbel-1">
+        </div>
+        <div class="marbel">
+            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 2" id="marbel-2">
+        </div>
+        <div class="marbel">
+            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 3" id="marbel-3">
+        </div>
+        <div class="marbel">
+            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 4" id="marbel-4">
+        </div>
+        <div class="marbel">
+            <img src="../TaskResources/marbels/marble1.jpg" alt="Marbel number 5" id="marbel-5">
+        </div>
+    </section>
+
+    <script>
+        let currentMarbelIndex = 0;
+        let toGoIndex = 0;
+        let speed = 1;
+        let slower = document.getElementById('slower');
+        let faster = document.getElementById('faster');
+        let vertical = document.getElementById('vertical');
+        let horizontal = document.getElementById('horizontal');
+
+        function resetInterval() {
+            // startInterval ? clearInterval(startInterval) : '';
+            startInterval = setInterval(function () {
+                let activeImage;
+
+                toGoIndex = currentMarbelIndex + 1
+                if (toGoIndex < 6 && toGoIndex > 0 && toGoIndex != 0) {
+                    activeImage = document.getElementById('marbel-' + toGoIndex);
+                    for (let i = 1; i < 6; i++) {
+                        img = document.getElementById('marbel-' + i)
+                        img.src = '../TaskResources/marbels/marble1.jpg';
+                    }
+                    activeImage.src = '../TaskResources/marbels/marble3.jpg';
+                    currentMarbelIndex = toGoIndex;
+                } else {
+                    toGoIndex = 1;
+                    activeImage = document.getElementById('marbel-' + toGoIndex);
+                    for (let i = 1; i < 6; i++) {
+                        img = document.getElementById('marbel-' + i)
+                        img.src = '../TaskResources/marbels/marble1.jpg';
+                    }
+                    activeImage.src = '../TaskResources/marbels/marble3.jpg';
+                    currentMarbelIndex = toGoIndex;
+                }
+            }, speed * 1000)
+        }
+
+
+
+        for (let i = 1; i < 6; i++) {
+            img = document.getElementById('marbel-' + i)
+            img.src = '../TaskResources/marbels/marble1.jpg';
+            img.onmousemove = function () {
+                clearInterval(startInterval);
+            }
+
+            img.onmouseout = function () {
+                clearInterval(startInterval);
+                resetInterval();
+            }
+        }
+
+
+        faster.onclick = function () {
+            if (speed <= 1 && speed >= 0.4) {
+                speed = speed - 0.2;
+                clearInterval(startInterval);
+                resetInterval()
+                document.getElementById('speed').innerHTML = 'Speed is ' + Math.round(speed * 1000) + 'ms'
+            }
+        }
+
+        slower.onclick = function () {
+            speed = speed + 0.2;
+            clearInterval(startInterval);
+            resetInterval()
+            document.getElementById('speed').innerHTML = 'Speed is ' + Math.round(speed * 1000) + 'ms'
+        }
+
+        vertical.onclick = function () {
+            document.querySelectorAll('.marbel').forEach(function (img) {
+                img.style.display = 'block';
+            });
+            horizontal.disabled = false;
+            vertical.disabled = true;
+        }
+
+        horizontal.onclick = function () {
+            document.querySelectorAll('.marbel').forEach(function (img) {
+                img.style.display = 'inline';
+            });
+            vertical.disabled = false;
+            horizontal.disabled = true;
+        }
+        resetInterval();
+    </script>
+</body>
+
+</html>
